@@ -175,7 +175,24 @@ fn data_types() {
         println!("person's name is: {}, and his age is: {}", person.name, person.age);
 
     }
-    //  - Enums
+    
+    {
+        //  - Enums
+        enum TrafficLight {
+            Red,
+            Yellow,
+            Green,
+        }
+
+        let go_light = TrafficLight::Green;
+        
+        match go_light {
+            TrafficLight::Red => println!("Stop!"),
+            TrafficLight::Yellow => println!("Slow down"),
+            TrafficLight::Green => println!("Go!"),
+        }
+
+    }
 }
 
 

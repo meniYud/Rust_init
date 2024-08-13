@@ -130,6 +130,18 @@ fn data_types() {
     }
 
     // compound types
+    {
+        let tup: (i32, f64, char) = (500, 6.4, 'x');
+
+        let (x, y, z) = tup;
+        println!("The value of x is {}", x);
+        println!("The value of y is {}", y);
+        println!("The value of z is {}", z);
+        
+        println!("The first value is {}", tup.0);
+        println!("The second value is {}", tup.1);
+        println!("The third value is {}", tup.2);
+    }
     //  - Tuples
     //  - Arrays
 

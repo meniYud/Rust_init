@@ -101,7 +101,19 @@ fn data_types() {
         println!("division: {}", division);
         println!("reminder: {}", reminder);
     }
-    //  - Booleans
+    
+    {
+        //  - Booleans
+        let t = true;
+        let f = false;
+
+        println!("t is {}, f is {}", t, f);
+
+        let not_t = !t;
+
+        println!("not_t = {}", not_t);
+    }
+    
     //  - Characters
 
     // compound types

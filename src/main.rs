@@ -114,7 +114,20 @@ fn data_types() {
         println!("not_t = {}", not_t);
     }
     
-    //  - Characters
+    {
+        //  - Characters
+        let c1 = "z";
+        let c2 = "X";
+        let c3 = "😂";
+
+        println!("c1 is {}, c2 is {}, c3 is {}", c1, c2 ,c3);
+
+        //iterate over characters in a string
+        let str = "Ciao, Hola, Bye";
+        for char in str.chars() {
+            println!("{}", char);
+        }
+    }
 
     // compound types
     //  - Tuples

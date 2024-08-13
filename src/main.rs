@@ -131,6 +131,7 @@ fn data_types() {
 
     // compound types
     {
+        //  - Tuples
         let tup: (i32, f64, char) = (500, 6.4, 'x');
 
         let (x, y, z) = tup;
@@ -142,8 +143,20 @@ fn data_types() {
         println!("The second value is {}", tup.1);
         println!("The third value is {}", tup.2);
     }
-    //  - Tuples
-    //  - Arrays
+    
+    {
+        //  - Arrays
+        let arr = [1,2,3,4,5]; // fixed size!! all of same type!!
+        let first = arr[0];
+        let second = arr[1];
+
+        println!("First is {}, Second is {}", first, second);
+
+        //iteration
+        for element in arr.iter() {
+            println!("element: {}", element);
+        }
+    }
 
     // custom types
     //  - Structs

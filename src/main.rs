@@ -159,7 +159,22 @@ fn data_types() {
     }
 
     // custom types
-    //  - Structs
+
+    {
+        //  - Structs
+        struct Person {
+            name: String,
+            age: u8,
+        }
+
+        let person = Person {
+            name: String::from("John"),
+            age: 25,
+        };
+
+        println!("person's name is: {}, and his age is: {}", person.name, person.age);
+
+    }
     //  - Enums
 }
 

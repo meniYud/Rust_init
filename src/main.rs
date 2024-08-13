@@ -54,6 +54,45 @@ fn vars() {
 
 }
 
+fn data_types() {
+// scalar types
+    {
+        //  - Integers
+        let small_number: u8 = 255;
+        let big_number: u128 = 123456789012345678;
+
+        let signed_small_number: i8 = -127;
+        let signed_big_number: i128 = -123456789012345678;
+
+        println!("small_number: {}", small_number);
+        println!("big_number: {}", big_number);
+        println!("signed_small_number: {}", signed_small_number);
+        println!("signed_big_number: {}", signed_big_number);
+
+        let decimal = 98_167;
+        let hex = 0xff;
+        let octal = 0o77;
+        let binary = 0b1111_0000;
+        let byte = b'A';
+        
+        println!("Decimal: {}", decimal);
+        println!("hex: {}", hex);
+        println!("octal: {}", octal);
+        println!("binary: {}", binary);
+        println!("byte: {}", byte);
+    }
+    //  - Floating-point numbers
+    //  - Booleans
+    //  - Characters
+
+    // compound types
+    //  - Tuples
+    //  - Arrays
+
+    // custom types
+    //  - Structs
+    //  - Enums
+}
 
 
 
@@ -61,5 +100,7 @@ fn vars() {
 
 
 fn main(){
-    vars()
+    // vars();
+    data_types();
+    
 }

@@ -81,7 +81,26 @@ fn data_types() {
         println!("binary: {}", binary);
         println!("byte: {}", byte);
     }
-    //  - Floating-point numbers
+    
+    {
+        //  - Floating-point numbers
+        let x = 2.0; // f64 by default. if you comment the arithmetic sections bellow - watch the default type changes
+        let y: f32 = 3.0;
+
+        println!("x= {}, y = {}", x, y);
+
+        let sum = x + y;
+        let difference = x - y;
+        let product = x * y;
+        let division = x / y;
+        let reminder = x % y;
+
+        println!("sum: {}", sum);
+        println!("difference: {}", difference);
+        println!("product: {}", product);
+        println!("division: {}", division);
+        println!("reminder: {}", reminder);
+    }
     //  - Booleans
     //  - Characters
 

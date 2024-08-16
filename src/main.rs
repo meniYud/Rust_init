@@ -244,3 +244,50 @@ fn main(){
     statements_vs_expressions()
 }
 
+/*
+In Rust, the semicolon serves as a statement terminator. Here's a more detailed explanation:
+
+1. Expressions vs. Statements:
+
+   - An expression evaluates to a value.
+   - A statement performs an action but does not produce a value.
+
+2. Role of the Semicolon:
+
+   - When you add a semicolon after an expression, you're telling Rust to evaluate that expression and then discard the result.
+   - This act of evaluating and discarding turns the expression into a statement.
+
+3. Semicolon Behavior:
+
+   - Without a semicolon: `num1 + num2` is an expression that produces a value.
+   - With a semicolon: `num1 + num2;` becomes a statement. It still computes the sum, but the result is immediately discarded.
+
+4. Implicit Return:
+
+   - Rust uses the value of the last expression in a block as the return value if there's no explicit `return` statement.
+   - A statement (ended with a semicolon) doesn't produce a value, so there's nothing to return implicitly.
+
+5. Unit Type:
+
+   - When an expression is turned into a statement with a semicolon, it effectively returns the unit type `()`.
+   - The unit type `()` in Rust is similar to `void` in other languages, representing "no value".
+
+This behavior is intentional in Rust's design. It allows for a clear distinction between expressions that produce values and statements that perform actions without producing values. It also enables concise function bodies where the last expression can serve as the return value without needing an explicit `return` keyword.
+
+Here's a small example to illustrate:
+
+
+fn expression_example() -> i32 {
+    5 + 3  // This is an expression, returns 8
+}
+
+fn statement_example() -> () {
+    5 + 3;  // This is a statement, returns ()
+}
+
+
+In `expression_example`, the function returns `8`. In `statement_example`, the addition is performed but its result is discarded, and the function returns `()`.
+
+Would you like me to clarify any part of this explanation further?
+
+*/

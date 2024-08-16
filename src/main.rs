@@ -1,3 +1,5 @@
+use std::char;
+
 fn vars() {
     {
         //types
@@ -347,6 +349,50 @@ fn match_enums(){
     println!("Quarter in cents: {}", value_in_cents(Coin::Quarter));
 }
 
+fn conditionless_loop(){
+    // loop {
+    //     Endless loop
+    // }
+
+    let mut counter = 0;
+    
+    let result = loop {
+        if counter < 10 {
+            println!("counter is {}", counter);
+            counter += 1;
+        } else {
+            break counter;
+        }
+    };
+
+    println!("The result is: {}", result);
+}
+
+fn while_loop() {
+    let mut count = 3;
+    while count/2 < 5 {
+        println!("while loop count is {}", count);
+        count += 1;
+    }
+}
+
+fn for_iterator(){
+    let a = [1,2,3,4,5,6,7,8,9];
+    let b = "hello";
+
+    for element in a {
+        println!("iterator element is: {}", element);
+    }
+
+    for char in b.chars() {
+        println!("iterator element is: {}", char);
+    }
+
+    for range_number in 1..4 {
+        println!("range iterator value is: {}", range_number)
+    }
+}
+
 fn flow_control(){
     let max1 = max_expression(5, 4);
     println!("max_expression value is {}", max1);
@@ -362,6 +408,12 @@ fn flow_control(){
     println!("a and b is true: {}", a_and_b);
 
     match_enums();
+
+    conditionless_loop();
+
+    while_loop();
+
+    for_iterator();
 }
 
 fn main(){

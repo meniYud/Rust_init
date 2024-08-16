@@ -196,12 +196,16 @@ fn data_types() {
 }
 
 
-
-
-
-
 fn main(){
     // vars();
-    data_types();
-    
+    // data_types();
+    another_function(42, 'a', "hello");
 }
+
+fn another_function(num: i32, letter: char, str: &str){
+    println!("The order of functions declarations is not important");
+    println!("The argument of num (value of the parameter called num) is {}", num);
+    println!("The argument of letter (value of the parameter called num) is {}", letter);
+    println!("The argument of str (value of the parameter called num) is {}", str);
+}
+

@@ -414,8 +414,25 @@ fn flow_control(){
     while_loop();
 
     for_iterator();
+
+    FizzBuzz();
 }
 
+fn FizzBuzz(){
+    println!("Start");
+    for number in 1..100 {
+        let mut str: String = "".to_owned();
+        if number % 3 == 0 {
+            str.push_str("Fizz");
+        }
+        if number % 5 == 0 {
+            str.push_str("Buzz");
+        }
+        if str != "" {
+            println!("{}", str);
+        }
+    }
+}
 fn main(){
     // vars();
     // data_types();

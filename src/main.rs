@@ -195,17 +195,31 @@ fn data_types() {
     }
 }
 
-
-fn main(){
-    // vars();
-    // data_types();
-    another_function(42, 'a', "hello");
-}
-
 fn another_function(num: i32, letter: char, str: &str){
     println!("The order of functions declarations is not important");
     println!("The argument of num (value of the parameter called num) is {}", num);
     println!("The argument of letter (value of the parameter called num) is {}", letter);
     println!("The argument of str (value of the parameter called num) is {}", str);
+}
+
+fn statements_vs_expressions(){
+    let x = 42; //statement (does not return value)
+    let z = 9 + x; //The RHS is an expression (returns a value)
+
+    // block scopes are expression
+    let y = {
+        let x = 3;
+        x + 1
+        // NOT x + 1;
+    };
+    println!("The returned value of the scope is {}", y);
+    println!("Note: if you add semi;colons at the end of line 213, the block scope will become a statement rather than expression");
+}
+
+fn main(){
+    // vars();
+    // data_types();
+    // another_function(42, 'a', "hello");
+    statements_vs_expressions()
 }
 

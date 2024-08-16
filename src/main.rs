@@ -209,11 +209,29 @@ fn statements_vs_expressions(){
     // block scopes are expression
     let y = {
         let x = 3;
+        
         x + 1
         // NOT x + 1;
     };
     println!("The returned value of the scope is {}", y);
     println!("Note: if you add semi;colons at the end of line 213, the block scope will become a statement rather than expression");
+
+    //Functions are also expressions
+    println!("The returned value is {}", sum(5,7));
+    println!("Note: if you add semi;colons at the end of line 231, the block scope will become a statement rather than expression");
+
+    let ret_val2 = sum_and_sub(5,7);
+    println!("You can also return a tupple: ({}, {})", ret_val2.0, ret_val2.1);
+
+    // You can use {:?} to print tuples
+    println!("You can also return a tupple: {:?}", ret_val2);
+}
+
+fn sum(num1: i32, num2: i32) -> i32 {
+    num1 + num2
+}
+fn sum_and_sub(num1: i32, num2: i32) -> (i32, i32) {
+    (num1 + num2, num1 - num2)
 }
 
 fn main(){

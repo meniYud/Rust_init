@@ -433,11 +433,31 @@ fn FizzBuzz(){
         }
     }
 }
+
+fn ownership(){
+    { // stack allocated string
+        // here s does not exist
+        let s = "hello"; // from now on - s is valid, for the rest of the scope
+
+    } // here s is no longer valid by default: println!("{}", s) <- will error
+    
+    { // heap allocated string
+        let mut s = String::from("hello");
+        s.push_str(", world");
+
+    } // here s is no longer valid SINCE RUST calls drop
+
+    
+    
+
+}
+
 fn main(){
     // vars();
     // data_types();
     // another_function(42, 'a', "hello");
     // statements_vs_expressions()
+    // flow_control()
 
-    flow_control()
+    ownership()
 }

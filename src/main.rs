@@ -447,7 +447,25 @@ fn ownership(){
 
     } // here s is no longer valid SINCE RUST calls drop
 
-    
+    // in order for Rust to be able to drop on block scope end - every value must have SINGLE OWNER
+
+    {
+        let mut s1 = String::from("hello"); // s1 is now the sole owner of the heap allocated string
+        let s2 = s1; // ownership transfer! s2 is now the sole ownership of the heap allocated string
+
+        // println!("{}", s1); <-- This will error!
+        println!("{}", s2); // <-- This will work!
+    }
+
+    {
+        let mut s1 = String::from("hello"); // s1 is now the sole owner of the heap allocated string
+        let s2 = s1.clone(); // s2 is now the ownership of DIFFERENT heap allocated string (which is a clone of the original one)
+
+        println!("{}", s1); // <-- This will work!
+        println!("{}", s2); // <-- This will work!
+    }
+
+
     
 
 }

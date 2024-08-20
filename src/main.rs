@@ -468,15 +468,43 @@ fn ownership(){
 }
 
 fn references(){
-    fn call_with_string(s: String){
-        println!("call_with_string s: {}", s);
+    {
+        fn call_with_string(s: String){
+            println!("call_with_string s: {}", s);
+        }
+    
+        let s = String::from("Hello");
+        println!("The value of s is {}", s);
+    
+        call_with_string(s);
+        // println!("After sending s as parameter to a function, s is: {}", s);  <-- ERROR: borrow of moved value: `s`. value borrowed here after move
     }
 
-    let s = String::from("Hello");
-    println!("The value of s is {}", s);
+    {
+        fn give_ownership() -> String{
+            let s = String::from("Hello from give_ownership");
+            s
+        }
 
-    call_with_string(s);
-    // println!("After sending s as parameter to a function, s is: {}", s);  <-- ERROR: borrow of moved value: `s`. value borrowed here after move
+        fn take_and_give_ownership(s:String) -> String{
+            s
+        }
+
+        let s1 = give_ownership();
+        println!("s1: {}", s1);
+
+        let s2 = String::from("back and forth string ownership");
+        let s3 = take_and_give_ownership(s2);
+        println!("s3: {}", s3);
+
+        // so, if we want to calculate the length of a string, we should return the length and the string itself!
+        fn calc_string_length(s_to_calc: String) ->(String, usize){
+            let len = s_to_calc.len();
+            (s_to_calc, len)
+        }
+        let (s,len) = calc_string_length(String::from("hello"));
+        println!("The length of {} is {}", s, len);
+    }
 }
 
 fn main(){

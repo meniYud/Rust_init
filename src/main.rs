@@ -518,6 +518,19 @@ fn references(){
         println!("The length of {} is {}", s, len);
     }
 
+    {
+        // If we want to modify a string, reference will not be enough. we need mutable reference!
+        fn modify_string(s_to_modify: &mut String) -> &mut String{
+            s_to_modify.push_str(" with pushed content");
+            s_to_modify
+        }
+
+        let mut s = String::from("hello");
+        let s_copy = s.clone();
+        let modified_s = modify_string(&mut s);
+        println!("The modificatin of {} is {}", s_copy, modified_s);
+    }
+
 }
 
 fn main(){

@@ -465,9 +465,18 @@ fn ownership(){
         println!("{}", s2); // <-- This will work!
     }
 
+}
 
-    
+fn references(){
+    fn call_with_string(s: String){
+        println!("call_with_string s: {}", s);
+    }
 
+    let s = String::from("Hello");
+    println!("The value of s is {}", s);
+
+    call_with_string(s);
+    // println!("After sending s as parameter to a function, s is: {}", s);  <-- ERROR: borrow of moved value: `s`. value borrowed here after move
 }
 
 fn main(){
@@ -476,6 +485,7 @@ fn main(){
     // another_function(42, 'a', "hello");
     // statements_vs_expressions()
     // flow_control()
+    // ownership()
 
-    ownership()
+    references()
 }

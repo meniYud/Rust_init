@@ -505,6 +505,19 @@ fn references(){
         let (s,len) = calc_string_length(String::from("hello"));
         println!("The length of {} is {}", s, len);
     }
+
+    {
+        // so, if we want to calculate the length of a string, we could send a "reference" to the string to avoid its being moved!
+        fn calc_string_length(s_to_calc: &String) -> usize{
+            let len = s_to_calc.len();
+            len
+        }
+
+        let s = String::from("hello");
+        let len = calc_string_length(&s);
+        println!("The length of {} is {}", s, len);
+    }
+
 }
 
 fn main(){

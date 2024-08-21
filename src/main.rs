@@ -562,6 +562,19 @@ fn slices(){
         println!("{}", hello);
         println!("{}", world);
     }
+
+    {//Range shortcut
+        let s = "Hello world";
+        let hello: &str = &s[..5];
+        let world: &str = &s[6..];
+        let hello_world = &s[..];
+        println!("{}", hello);
+        println!("{}", world);
+        println!("{}", hello_world);
+    }
+
+
+
 }
 
 fn main(){

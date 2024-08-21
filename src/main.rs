@@ -573,6 +573,20 @@ fn slices(){
         println!("{}", hello_world);
     }
 
+    {//Ex.1 Given a string, silce it into its words
+        //solution #1
+        let s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
+        let mut word_start = 0;
+        for (index, char) in s.chars().enumerate() {
+            if char == ' ' {
+                let new_word: &str = &s[word_start..index];
+                println!("{}", new_word);
+                word_start = index + 1;
+            }
+        }
+        let new_word: &str = &s[word_start..];
+        println!("{}", new_word);
+    }
 
 
 }

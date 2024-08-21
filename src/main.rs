@@ -542,6 +542,28 @@ fn references(){
     }
 }
 
+fn slices(){
+    {
+        let arr: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
+        let slice: &[char] = &arr[1..3];
+        println!("{:?}", slice);
+
+        let vec: Vec<i8> = vec![10, 20, 30, 40, 50];
+        let vec_slice: &[i8] = &vec[1..3];
+        println!("{:?}", vec_slice);
+
+        let s_arr: [String; 5] = [String::from("alo"), String::from("blo"), String::from("clo"), String::from("dlo"), String::from("elo")];
+        let s_slice: &[String] = &s_arr[1..3];
+        println!("{:?}", s_slice);
+
+        let s = String::from("Hello world");
+        let hello: &str = &s[0..5];
+        let world: &str = &s[6..11];
+        println!("{}", hello);
+        println!("{}", world);
+    }
+}
+
 fn main(){
     // vars();
     // data_types();
@@ -549,6 +571,7 @@ fn main(){
     // statements_vs_expressions()
     // flow_control()
     // ownership()
+    // references()
 
-    references()
+    slices();
 }

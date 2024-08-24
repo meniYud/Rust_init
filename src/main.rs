@@ -588,35 +588,62 @@ fn slices(){
     //     println!("{}", new_word);
     // }
 
-    {//Ex.1 Given a string, silce it into its words
-        //solution #2 - no slices
-        let mut s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
-        let mut has_chars = s.len();
+    // {//Ex.2 Given a string, silce it into its words
+    //     //solution #2 - no slices
+    //     let mut s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
+    //     let mut has_chars = s.len();
 
-        while s.len() > 0 {
-            let mut first_word_index = first_word(&s);
-            if s.len() > first_word_index {// still have spaces
-                first_word_index += 1;
-            } 
-            let removed: String = s.drain(..first_word_index).collect();
-            println!("{}", removed);
-        }
+    //     while s.len() > 0 {
+    //         let mut first_word_index = first_word(&s);
+    //         if s.len() > first_word_index {// still have spaces
+    //             first_word_index += 1;
+    //         } 
+    //         let removed: String = s.drain(..first_word_index).collect();
+    //         println!("{}", removed);
+    //     }
 
-        fn first_word(s: &String) -> usize{
+    //     fn first_word(s: &String) -> usize{
 
+    //         let bytes = s.as_bytes();
+
+    //         for (i, &item) in bytes.iter().enumerate() {
+    //             if item == b' ' {
+    //                 return i;
+    //             }
+    //         }
+
+    //         return s.len()
+    //     }
+
+
+    // }
+
+    {// slices with string literals
+        let s1 = "another string";
+        let s2 = String::from("another string");
+
+        let mut first_word = first_word_fn(s1); // string literals ARE SLICES;
+        println!("{}", first_word);
+
+        first_word = first_word_fn(&s2);
+        println!("{}", first_word);
+
+        fn first_word_fn(s: &str) -> &str{
             let bytes = s.as_bytes();
 
             for (i, &item) in bytes.iter().enumerate() {
                 if item == b' ' {
-                    return i;
+                    return &s[0..i];
                 }
             }
 
-            return s.len()
+            return &s[..]
         }
 
 
     }
+
+   
 
 
 }

@@ -573,19 +573,49 @@ fn slices(){
         println!("{}", hello_world);
     }
 
+    // {//Ex.1 Given a string, silce it into its words
+    //     //solution #1
+    //     let s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
+    //     let mut word_start = 0;
+    //     for (index, char) in s.chars().enumerate() {
+    //         if char == ' ' {
+    //             let new_word: &str = &s[word_start..index];
+    //             println!("{}", new_word);
+    //             word_start = index + 1;
+    //         }
+    //     }
+    //     let new_word: &str = &s[word_start..];
+    //     println!("{}", new_word);
+    // }
+
     {//Ex.1 Given a string, silce it into its words
-        //solution #1
-        let s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
-        let mut word_start = 0;
-        for (index, char) in s.chars().enumerate() {
-            if char == ' ' {
-                let new_word: &str = &s[word_start..index];
-                println!("{}", new_word);
-                word_start = index + 1;
-            }
+        //solution #2 - no slices
+        let mut s = String::from("Just a perfect day Drink sangria in the park And then later when it gets dark We go home");
+        let mut has_chars = s.len();
+
+        while s.len() > 0 {
+            let mut first_word_index = first_word(&s);
+            if s.len() > first_word_index {// still have spaces
+                first_word_index += 1;
+            } 
+            let removed: String = s.drain(..first_word_index).collect();
+            println!("{}", removed);
         }
-        let new_word: &str = &s[word_start..];
-        println!("{}", new_word);
+
+        fn first_word(s: &String) -> usize{
+
+            let bytes = s.as_bytes();
+
+            for (i, &item) in bytes.iter().enumerate() {
+                if item == b' ' {
+                    return i;
+                }
+            }
+
+            return s.len()
+        }
+
+
     }
 
 

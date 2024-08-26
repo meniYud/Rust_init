@@ -666,6 +666,20 @@ fn structs(){
 
     println!("User1 name: {} \nEmail: {} \nIs active: {} \nAge: {}", user1.name, user1.email, user1.is_active, user1.age);
     println!("{:?}", user1);
+
+    //structs are immutable by default, so:
+    // user1.name = String::from("Othe name") will Error
+
+    let mut user2 =  User {
+        name: String::from("Mutable user"),
+        email: String::from("mut@mail.com"),
+        is_active: true,
+        age: 25
+    };
+
+    // now we can mutate:
+    user2.age = 5;
+    println!("{:?}", user2);
 }
 
 

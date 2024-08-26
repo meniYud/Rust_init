@@ -648,15 +648,16 @@ fn slices(){
 
 }
 
-fn structs(){
-    #[derive(Debug)]
-    struct User {
-        name: String,
-        email: String,
-        is_active: bool,
-        age: u8
-    }
+#[derive(Debug)]
+struct User {
+    name: String,
+    email: String,
+    is_active: bool,
+    age: u8
+}
 
+fn structs(){
+    
     let user1 = User {
         name: String::from("John Doe"),
         email: String::from("doe@mail.com"),
@@ -682,6 +683,22 @@ fn structs(){
     println!("{:?}", user2);
 }
 
+fn struct_factory() {
+    fn build_user(name: String, email: String, age: u8) -> User{
+        User {
+            name,
+            email,
+            is_active: true,
+            age
+        }
+    };
+
+    let user1 = build_user(String::from("First"), String::from("john@email.com"), 18);
+    let user2 = build_user(String::from("Second"), user1.email.clone(), user1.age);
+
+    println!("{:?}", user1);
+    println!("{:?}", user2);
+}
 
 fn main(){
     // vars();
@@ -692,6 +709,6 @@ fn main(){
     // ownership()
     // references()
     // slices();
-
-    structs()
+    // structs()
+    struct_factory()
 }

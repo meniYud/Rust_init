@@ -1,4 +1,4 @@
-use std::char;
+// use std::char;
 
 fn vars() {
     {
@@ -618,35 +618,56 @@ fn slices(){
 
     // }
 
-    {// slices with string literals
-        let s1 = "another string";
-        let s2 = String::from("another string");
+    // {// slices with string literals
+    //     let s1 = "another string";
+    //     let s2 = String::from("another string");
 
-        let mut first_word = first_word_fn(s1); // string literals ARE SLICES;
-        println!("{}", first_word);
+    //     let mut first_word = first_word_fn(s1); // string literals ARE SLICES;
+    //     println!("{}", first_word);
 
-        first_word = first_word_fn(&s2);
-        println!("{}", first_word);
+    //     first_word = first_word_fn(&s2);
+    //     println!("{}", first_word);
 
-        fn first_word_fn(s: &str) -> &str{
-            let bytes = s.as_bytes();
+    //     fn first_word_fn(s: &str) -> &str{
+    //         let bytes = s.as_bytes();
 
-            for (i, &item) in bytes.iter().enumerate() {
-                if item == b' ' {
-                    return &s[0..i];
-                }
-            }
+    //         for (i, &item) in bytes.iter().enumerate() {
+    //             if item == b' ' {
+    //                 return &s[0..i];
+    //             }
+    //         }
 
-            return &s[..]
-        }
+    //         return &s[..]
+    //     }
 
 
-    }
+    // }
 
    
 
 
 }
+
+fn structs(){
+    #[derive(Debug)]
+    struct User {
+        name: String,
+        email: String,
+        is_active: bool,
+        age: u8
+    }
+
+    let user1 = User {
+        name: String::from("John Doe"),
+        email: String::from("doe@mail.com"),
+        is_active: true,
+        age: 25
+    };
+
+    println!("User1 name: {} \nEmail: {} \nIs active: {} \nAge: {}", user1.name, user1.email, user1.is_active, user1.age);
+    println!("{:?}", user1);
+}
+
 
 fn main(){
     // vars();
@@ -656,6 +677,7 @@ fn main(){
     // flow_control()
     // ownership()
     // references()
+    // slices();
 
-    slices();
+    structs()
 }

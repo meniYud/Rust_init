@@ -711,7 +711,13 @@ fn tuples_struct(){
 
     println!("R: {}, G: {}, B: {}", black.0, black.1, black.2);
     println!("X: {}, Y: {}, Z: {}", origin.0, origin.1, origin.2);
+
+    //unit-like structs:
+    #[derive(Debug)]
+    struct Car;
+    println!("Unit-like struct: {:?}", Car);
 }
+
 fn main(){
     // vars();
     // data_types();

@@ -718,6 +718,39 @@ fn tuples_struct(){
     println!("Unit-like struct: {:?}", Car);
 }
 
+fn structs_in_use(){
+    { // without structs
+        fn calculate_rect_area(width: u32, height: u32) -> u32{
+            width * height
+        }
+        let width = 30;
+        let height = 50;
+        let area = calculate_rect_area(width, height);
+        println!("The area is: {}", area);
+    }
+
+    { // with structs
+        #[derive(Debug)]
+        struct Rectangle {
+            width: u32,
+            height: u32,
+            // We could also do that with tuple struct
+        }
+        fn calculate_rect_area(rect: &Rectangle) -> u32{
+            rect.width * rect.height
+        }
+
+        let rect1 = Rectangle{
+            width: 30,
+            height: 50
+        };
+
+        let area = calculate_rect_area(&rect1);
+        println!("The Rectangle: {:#?}", rect1);
+        println!("The area of the rectangle is: {}", area);
+    }
+}
+
 fn main(){
     // vars();
     // data_types();
@@ -729,5 +762,7 @@ fn main(){
     // slices();
     // structs()
     // struct_factory()
-    tuples_struct()
+    // tuples_struct()
+
+    structs_in_use()
 }

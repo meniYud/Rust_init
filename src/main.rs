@@ -728,6 +728,10 @@ impl Rectangle{
     fn calculate_area(&self) -> u32{
         self.width * self.height
     }
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        (self.width > other.width && self.height > other.height) ||
+        (self.width > other.height && self.height > other.width)
+    }
 
     // method with the same name as a field
     fn width(&self) -> bool {
@@ -736,8 +740,15 @@ impl Rectangle{
     fn height(&self) -> bool {
         self.height > 0
     }
-
     //we can use these kind of methods to create getters
+
+    //associated functio to define square
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size
+        }
+    }
 }
 fn structs_in_use(){
     { // without structs
@@ -768,16 +779,27 @@ fn structs_in_use(){
 
     {// using struct's method (impl block)
         let rect1 = Rectangle{
-            width: 0,
+            width: 30,
             height: 50
         };
+        let rect2 = Rectangle{
+            width: 0,
+            height: 30
+        };
 
-        if(rect1.width() && rect1.height()){
-            println!("Using the method, the area is: {}", rect1.calculate_area());
+        if(rect2.width() && rect2.height()){
+            println!("Using the method, the area is: {}", rect2.calculate_area());
         } else {
-            println!("ERROR!\nThe width is: {}\nThe height is: {}", rect1.width, rect1.height);
+            println!("ERROR!\nThe width is: {}\nThe height is: {}", rect2.width, rect2.height);
         }
 
+        println!("Renct 1 can hold rect 2: {}", rect1.can_hold(&rect2))
+
+    }
+
+    {
+        let square = Rectangle::square(20);
+        println!("The size of our square is: {}", square.calculate_area())
     }
 
 }

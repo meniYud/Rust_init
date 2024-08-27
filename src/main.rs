@@ -656,6 +656,11 @@ struct User {
     age: u8
 }
 
+#[derive(Debug)]
+struct Color(i32, i32, i32);
+
+#[derive(Debug)]
+struct Point_3d(i32, i32, i32);
 fn structs(){
     
     let user1 = User {
@@ -697,9 +702,16 @@ fn struct_factory() {
     let user2 = build_user(String::from("Second"), user1.email.clone(), user1.age);
 
     println!("{:?}", user1);
-    println!("{:?}", user2);
+    println!("{:?}", user2); // user2 had to clone user1.email since he has no ownership over the string
 }
 
+fn tuples_struct(){
+    let black = Color(0,0,0);
+    let origin = Point_3d(0,0,0);
+
+    println!("R: {}, G: {}, B: {}", black.0, black.1, black.2);
+    println!("X: {}, Y: {}, Z: {}", origin.0, origin.1, origin.2);
+}
 fn main(){
     // vars();
     // data_types();
@@ -710,5 +722,6 @@ fn main(){
     // references()
     // slices();
     // structs()
-    struct_factory()
+    // struct_factory()
+    tuples_struct()
 }

@@ -718,6 +718,27 @@ fn tuples_struct(){
     println!("Unit-like struct: {:?}", Car);
 }
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+//impl block is used to define methods in the context of some struct
+impl Rectangle{
+    fn calculate_area(&self) -> u32{
+        self.width * self.height
+    }
+
+    // method with the same name as a field
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+    fn height(&self) -> bool {
+        self.height > 0
+    }
+
+    //we can use these kind of methods to create getters
+}
 fn structs_in_use(){
     { // without structs
         fn calculate_rect_area(width: u32, height: u32) -> u32{
@@ -729,13 +750,8 @@ fn structs_in_use(){
         println!("The area is: {}", area);
     }
 
-    { // with structs
-        #[derive(Debug)]
-        struct Rectangle {
-            width: u32,
-            height: u32,
-            // We could also do that with tuple struct
-        }
+    { // with structs (We could also do that with tuple struct)
+        
         fn calculate_rect_area(rect: &Rectangle) -> u32{
             rect.width * rect.height
         }
@@ -749,6 +765,21 @@ fn structs_in_use(){
         println!("The Rectangle: {:#?}", rect1);
         println!("The area of the rectangle is: {}", area);
     }
+
+    {// using struct's method (impl block)
+        let rect1 = Rectangle{
+            width: 0,
+            height: 50
+        };
+
+        if(rect1.width() && rect1.height()){
+            println!("Using the method, the area is: {}", rect1.calculate_area());
+        } else {
+            println!("ERROR!\nThe width is: {}\nThe height is: {}", rect1.width, rect1.height);
+        }
+
+    }
+
 }
 
 fn main(){

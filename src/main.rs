@@ -810,6 +810,23 @@ enum IpAddrKind {
     V6
 }
 
+#[derive(Debug)]
+struct Host {
+    host_name: String,
+    ip: Option<String>,
+    ip_type: Option<IpAddrKind>,
+}
+
+impl Host {
+    fn set_ip(&mut self, ip: String){
+        let ip_parts: Vec<&str> = ip.split('.').collect();
+        let is_v4 = ip_parts.len() == 4;
+        self.ip = Some(ip);
+        self.ip_type = if is_v4 {Some(IpAddrKind::V4)} else {Some(IpAddrKind::V6)};
+    }
+    
+}
+
 fn enums(){
     fn ip_addr_printer(ip: IpAddrKind){
         println!("Your IP version is: {:?}", ip);
@@ -821,6 +838,18 @@ fn enums(){
         ip_addr_printer(four);
         ip_addr_printer(six);
     }
+
+    {
+        let mut my_host = Host {
+            host_name: String::from("personal_laptop"),
+            ip: None,
+            ip_type: None
+        };
+
+        my_host.set_ip(String::from("1.2.3.4"));
+        println!("My host details: {:?}", my_host);
+    }
+
 }
 
 

@@ -742,7 +742,7 @@ impl Rectangle{
     }
     //we can use these kind of methods to create getters
 
-    //associated functio to define square
+    //associated function to define square
     fn square(size: u32) -> Self {
         Self {
             width: size,
@@ -804,6 +804,26 @@ fn structs_in_use(){
 
 }
 
+#[derive(Debug)]
+enum IpAddrKind {
+    V4,
+    V6
+}
+
+fn enums(){
+    fn ip_addr_printer(ip: IpAddrKind){
+        println!("Your IP version is: {:?}", ip);
+    }
+    {
+        let four = IpAddrKind::V4;
+        let six = IpAddrKind::V6;
+
+        ip_addr_printer(four);
+        ip_addr_printer(six);
+    }
+}
+
+
 fn main(){
     // vars();
     // data_types();
@@ -816,6 +836,7 @@ fn main(){
     // structs()
     // struct_factory()
     // tuples_struct()
+    // structs_in_use()
 
-    structs_in_use()
+    enums()
 }

@@ -827,6 +827,13 @@ impl Host {
     
 }
 
+#[derive(Debug)]
+enum IpAddrType {
+    V4(String),
+    V6(String)
+}
+
+
 fn enums(){
     fn ip_addr_printer(ip: IpAddrKind){
         println!("Your IP version is: {:?}", ip);
@@ -848,6 +855,14 @@ fn enums(){
 
         my_host.set_ip(String::from("1.2.3.4"));
         println!("My host details: {:?}", my_host);
+    }
+
+    {
+        let home = IpAddrType::V4(String::from("127.0.0.1"));
+        println!("My home address is: {:?}", home);
+
+        let loopback = IpAddrType::V6(String::from("::1"));
+        println!("My loopback address is: {:?}", loopback);
     }
 
 }

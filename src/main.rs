@@ -833,7 +833,6 @@ enum IpAddrType {
     V6(String)
 }
 
-
 fn enums(){
     fn ip_addr_printer(ip: IpAddrKind){
         println!("Your IP version is: {:?}", ip);
@@ -867,6 +866,31 @@ fn enums(){
 
 }
 
+#[derive(Debug)]
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self){
+        println!("{:?}", self);
+    }
+}
+
+fn enum_methods(){
+    let writer = Message::Write(String::from("Hello"));
+    let mover = Message::Move { x: (3014), y: (151) };
+    let painter = Message::ChangeColor(200, 255, 0);
+    let quiter = Message::Quit;
+
+    writer.call();
+    mover.call();
+    painter.call();
+    quiter.call();
+}
 
 fn main(){
     // vars();
@@ -881,6 +905,6 @@ fn main(){
     // struct_factory()
     // tuples_struct()
     // structs_in_use()
-
-    enums()
+    // enums()
+    enum_methods()
 }

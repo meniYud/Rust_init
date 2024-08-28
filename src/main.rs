@@ -829,7 +829,7 @@ impl Host {
 
 #[derive(Debug)]
 enum IpAddrType {
-    V4(String),
+    V4(u8, u8, u8, u8),
     V6(String)
 }
 
@@ -858,7 +858,7 @@ fn enums(){
     }
 
     {
-        let home = IpAddrType::V4(String::from("127.0.0.1"));
+        let home = IpAddrType::V4(127,0,0,1);
         println!("My home address is: {:?}", home);
 
         let loopback = IpAddrType::V6(String::from("::1"));

@@ -892,6 +892,16 @@ fn enum_methods(){
     quiter.call();
 }
 
+fn optionals(){
+    let x: i8 = 5;
+    let y: Option<i8> = Some(4);
+
+    // let sum = x + y;  <- Error: cannot add `Option<{integer}>` to `{integer}`
+
+    let sum = x + y.unwrap();
+    println!("The sum is: {}", sum);
+}
+
 fn main(){
     // vars();
     // data_types();
@@ -906,5 +916,6 @@ fn main(){
     // tuples_struct()
     // structs_in_use()
     // enums()
-    enum_methods()
+    // enum_methods()
+    optionals()
 }

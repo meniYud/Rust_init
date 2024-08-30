@@ -51,6 +51,19 @@ pub fn matcher(){
         println!("The square of {:?} is {:?}", mult1, sq);
         sq = square(mult2);
         println!("The square of {:?} is {:?}", mult2, sq);
+    }
+
+    {
+        let dice_roll = 9;
+
+        match dice_roll {
+            1 => println!("You rolled one"),
+            2 => println!("You rolled two"),
+            3 => println!("You rolled three"),
+            4 => println!("You rolled four"),
+            5 => println!("You rolled five"),
+            _other => println!("You rolled something else!"),
+        }
 
     }
 

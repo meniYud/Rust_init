@@ -1,4 +1,5 @@
-// use std::char;
+mod matcher;
+use matcher::matcher;
 
 fn vars() {
     {
@@ -917,5 +918,6 @@ fn main(){
     // structs_in_use()
     // enums()
     // enum_methods()
-    optionals()
+    // optionals()
+    matcher();
 }

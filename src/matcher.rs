@@ -67,5 +67,21 @@ pub fn matcher(){
 
     }
 
+    {
 
+    }
+}
+
+pub fn if_let(){
+    {
+        let config_max = Some(100);
+        match config_max {
+            Some(max) => println!("The max is configuted to be: {}", max),
+            _ => ()
+        }// match is to much here... we can use if-let statement
+
+        if let Some(max) = config_max {
+            println!("The max is configuted to be: {}", max)
+        }
+    }
 }

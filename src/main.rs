@@ -1,5 +1,6 @@
 mod matcher;
 use matcher::matcher;
+use matcher::if_let;
 
 fn vars() {
     {
@@ -919,5 +920,6 @@ fn main(){
     // enums()
     // enum_methods()
     // optionals()
-    matcher();
+    // matcher();
+    if_let()
 }

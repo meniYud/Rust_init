@@ -84,4 +84,19 @@ pub fn if_let(){
             println!("The max is configuted to be: {}", max)
         }
     }
+
+    {
+        fn rarity_printer(coin: Coin){
+            if let Coin::Quarter(rarity) = coin {
+                println!("The rarity of the coin is: {:?}", rarity)
+            } else {
+                println!("No rarity to the given coin");
+            }
+        }
+        let rare_coin1 = Coin::Dime;
+        rarity_printer(rare_coin1);
+        let rare_coin2 = Coin::Quarter(Rarity::Legendary);
+        rarity_printer(rare_coin2);
+        
+    }
 }

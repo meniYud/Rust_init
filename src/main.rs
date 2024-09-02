@@ -4,241 +4,20 @@ use vars::vars;
 mod data_types;
 use data_types::data_types;
 
+mod statements_vs_expressions;
+use statements_vs_expressions::statements_vs_expressions;
+
+mod flow_control;
+use flow_control::flow_control;
+
 mod matcher;
 use matcher::matcher;
 use matcher::if_let;
 
 
 
-fn sum(num1: i32, num2: i32) -> i32 {
-    num1 + num2
-}
-fn sum_and_sub(num1: i32, num2: i32) -> (i32, i32) {
-    return (num1 + num2, num1 - num2);
-    println!("This will not be printed");
-}
-
-fn statements_vs_expressions(){
-    let x = 42; //statement (does not return value)
-    let z = 9 + x; //The RHS is an expression (returns a value)
-
-    // block scopes are expression
-    let y = {
-        let x = 3;
-        
-        x + 1
-        // NOT x + 1;
-    };
-    println!("The returned value of the scope is {}", y);
-    println!("Note: if you add semi;colons at the end of line 221, the block scope will become a statement rather than expression");
-
-    //Functions are also expressions
-    println!("The returned value is {}", sum(5,7));
-    println!("Note: if you add semi;colons at the end of line 206, the block scope will become a statement rather than expression");
-
-    let ret_val2 = sum_and_sub(5,7);
-    println!("You can also return a tupple: ({}, {})", ret_val2.0, ret_val2.1);
-
-    // You can use {:?} to print tuples
-    println!("You can also return a tupple: {:?}", ret_val2);
-
-    
-/*
-In Rust, the semicolon serves as a statement terminator. Here's a more detailed explanation:
-
-1. Expressions vs. Statements:
-
-   - An expression evaluates to a value.
-   - A statement performs an action but does not produce a value.
-
-2. Role of the Semicolon:
-
-   - When you add a semicolon after an expression, you're telling Rust to evaluate that expression and then discard the result.
-   - This act of evaluating and discarding turns the expression into a statement.
-
-3. Semicolon Behavior:
-
-   - Without a semicolon: `num1 + num2` is an expression that produces a value.
-   - With a semicolon: `num1 + num2;` becomes a statement. It still computes the sum, but the result is immediately discarded.
-
-4. Implicit Return:
-
-   - Rust uses the value of the last expression in a block as the return value if there's no explicit `return` statement.
-   - A statement (ended with a semicolon) doesn't produce a value, so there's nothing to return implicitly.
-
-5. Unit Type:
-
-   - When an expression is turned into a statement with a semicolon, it effectively returns the unit type `()`.
-   - The unit type `()` in Rust is similar to `void` in other languages, representing "no value".
-
-This behavior is intentional in Rust's design. It allows for a clear distinction between expressions that produce values and statements that perform actions without producing values. It also enables concise function bodies where the last expression can serve as the return value without needing an explicit `return` keyword.
-
-Here's a small example to illustrate:
 
 
-fn expression_example() -> i32 {
-    5 + 3  // This is an expression, returns 8
-}
-
-fn statement_example() -> () {
-    5 + 3;  // This is a statement, returns ()
-}
-
-
-In `expression_example`, the function returns `8`. In `statement_example`, the addition is performed but its result is discarded, and the function returns `()`.
-
-Would you like me to clarify any part of this explanation further?
-
-*/
-}
-
-fn max_expression(arg1: i32, arg2: i32) -> i32{
-    if arg1 > arg2 {
-        arg1
-    } else {
-        arg2
-    }
-}
-fn max_statement(arg1: i32, arg2: i32) -> i32{
-    // if is an expression so we can write
-    let max = if arg1 > arg2 {
-        arg1
-    } else {
-        arg2
-    };
-    max
-}
-
-fn nested_condition(arg1: i32, arg2: i32) -> bool{
-    if arg1 % 2 == 0 {
-        println!("arg1 is even {}", arg1);
-        true
-    } else {
-        println!("arg1 is odd {}", arg1);
-        if arg2 % 2 == 0 {
-            println!("arg2 is even {}", arg2);
-            return true;
-        } else {
-            println!("arg2 is odd {}", arg2);
-            return false;
-        }
-    }
-}
-
-fn and_or() -> (bool, bool) {
-    let a = false;
-    let b = true;
-
-    return (a && b, a || b);
-}
-
-fn match_enums(){
-    enum Coin {
-        Penny,
-        Nickel,
-        Dime,
-        Quarter,
-    }
-
-    fn value_in_cents(coin: Coin) -> u8 {
-        match coin {
-            Coin::Penny => 1,
-            Coin::Nickel => 5,
-            Coin::Dime => 10,
-            Coin::Quarter => 25,
-        }
-    }
-
-    println!("Penny in cents: {}", value_in_cents(Coin::Penny));
-    println!("Nickel in cents: {}", value_in_cents(Coin::Nickel));
-    println!("Dime in cents: {}", value_in_cents(Coin::Dime));
-    println!("Quarter in cents: {}", value_in_cents(Coin::Quarter));
-}
-
-fn conditionless_loop(){
-    // loop {
-    //     Endless loop
-    // }
-
-    let mut counter = 0;
-    
-    let result = loop {
-        if counter < 10 {
-            println!("counter is {}", counter);
-            counter += 1;
-        } else {
-            break counter;
-        }
-    };
-
-    println!("The result is: {}", result);
-}
-
-fn while_loop() {
-    let mut count = 3;
-    while count/2 < 5 {
-        println!("while loop count is {}", count);
-        count += 1;
-    }
-}
-
-fn for_iterator(){
-    let a = [1,2,3,4,5,6,7,8,9];
-    let b = "hello";
-
-    for element in a {
-        println!("iterator element is: {}", element);
-    }
-
-    for char in b.chars() {
-        println!("iterator element is: {}", char);
-    }
-
-    for range_number in 1..4 {
-        println!("range iterator value is: {}", range_number)
-    }
-}
-
-fn flow_control(){
-    let max1 = max_expression(5, 4);
-    println!("max_expression value is {}", max1);
-    
-    let max2 = max_statement(5, 4);
-    println!("max_statement value is {}", max2);
-    
-    let oddity = nested_condition(5, 4);
-    println!("oddity is {}", oddity);
-
-    let (a_and_b, a_or_b) = and_or();
-    println!("a or b is true: {}", a_or_b);
-    println!("a and b is true: {}", a_and_b);
-
-    match_enums();
-
-    conditionless_loop();
-
-    while_loop();
-
-    for_iterator();
-
-    FizzBuzz();
-}
-
-fn FizzBuzz(){
-    println!("Start");
-    for number in 1..100 {
-        let mut str: String = "".to_owned();
-        if number % 3 == 0 {
-            str.push_str("Fizz");
-        }
-        if number % 5 == 0 {
-            str.push_str("Buzz");
-        }
-        if str != "" {
-            println!("{}", str);
-        }
-    }
-}
 
 fn ownership(){
     { // stack allocated string
@@ -711,9 +490,9 @@ fn optionals(){
 fn main(){
     // vars();
     // data_types();
-
     // statements_vs_expressions()
-    // flow_control()
+    
+    flow_control()
     // ownership()
     // references()
     // slices();

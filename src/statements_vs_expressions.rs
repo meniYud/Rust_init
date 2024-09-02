@@ -1,3 +1,14 @@
+/*
+Source: https://www.youtube.com/watch?v=hJLc2Zu405A&list=PLPoSdR46FgI412aItyJhj2bF66cudB6Qs&index=4
+
+Rust functions
+- What are functions in Rust? basics
+- Parameters and arguments. Multiple parameters
+- Statements and expressions
+- Return values
+- Early return
+- Recap
+*/
 
 fn sum(num1: i32, num2: i32) -> i32 {
    num1 + num2

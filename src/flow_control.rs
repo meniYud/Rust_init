@@ -1,4 +1,16 @@
+/*
+Source: https://www.youtube.com/watch?v=2w_FTiD74JI&list=PLPoSdR46FgI412aItyJhj2bF66cudB6Qs&index=5
 
+In this lesson, we'll cover the basic control flow in Rust. We'll cover the following topics:
+
+if expressions
+match
+loop expressions
+while expressions
+for expressions
+At the end, we'll have a simple exercise to practice what we've learned.
+
+*/
 
 fn max_conditional_expression(arg1: i32, arg2: i32) -> i32{
     if arg1 > arg2 {

@@ -1,34 +1,25 @@
-mod vars;
-use vars::vars;
+mod fundamentals;
 
-mod data_types;
-use data_types::data_types;
+use fundamentals::vars::vars;
+use fundamentals::data_types::data_types;
+use fundamentals::statements_vs_expressions::statements_vs_expressions;
+use fundamentals::flow_control::flow_control;
 
-mod statements_vs_expressions;
-use statements_vs_expressions::statements_vs_expressions;
+use fundamentals::ownership::ownership;
+use fundamentals::ownership::references;
+use fundamentals::ownership::slices;
 
-mod flow_control;
-use flow_control::flow_control;
+use fundamentals::structs::structs;
+use fundamentals::structs::struct_factory;
+use fundamentals::structs::tuples_struct;
+use fundamentals::structs::structs_in_use;
 
-mod ownership;
-use ownership::ownership;
-use ownership::references;
-use ownership::slices;
+use fundamentals::enums::enums;
+use fundamentals::enums::enum_methods;
+use fundamentals::enums::optionals;
 
-mod structs;
-use structs::structs;
-use structs::struct_factory;
-use structs::tuples_struct;
-use structs::structs_in_use;
-
-mod enums;
-use enums::enums;
-use enums::enum_methods;
-use enums::optionals;
-
-mod matcher;
-use matcher::matcher;
-use matcher::if_let;
+use fundamentals::matcher::matcher;
+use fundamentals::matcher::if_let;
 
 
 

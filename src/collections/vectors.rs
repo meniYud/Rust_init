@@ -13,7 +13,7 @@ Finally, we'll discuss the lifecycle of a Vector and what happens when it is dro
 
 */
 
-pub fn vectors(){
+pub fn vector_operations(){
     let vec1: Vec<i32> = Vec::new();
     println!("Constructed vector: {:?}", vec1);
 

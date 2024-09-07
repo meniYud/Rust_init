@@ -22,4 +22,15 @@ pub fn string_operations(){
 
     println!("s: {}", s);
 
+    //update a string
+    let mut s = String::from("first");
+    s.push_str(", second");
+
+    println!("updated string: {}", s);
+
+    s.push('!');
+    println!("updated with single char: {}", s);
+
+    
+
 }

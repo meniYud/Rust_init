@@ -51,4 +51,19 @@ pub fn vectors(){
         None => println!("Vector doesn't hold fifth element, or fifth element is None")
     }
 
+    //iterate over vector element
+    let vec5 = vec![1,2,3,4,5,6];
+
+    for i in &vec5 {
+        println!("{}", i);
+    }
+
+    let mut vec6 = vec![10,20,30,40,50,60];
+    println!("Old vecor: {:?}", vec6);
+
+    for i in &mut vec6 {
+        *i += 1
+    }
+    println!("Updated vector: {:?}", vec6);
+
 }

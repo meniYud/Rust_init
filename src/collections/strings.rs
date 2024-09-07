@@ -44,4 +44,17 @@ pub fn string_operations(){
     let concat2 = format!("formated concatenation: {}{}{}", s11, s2, s3);
     println!("{}", concat2);
 
+    //Indexing into strings
+    let s1 = String::from("Hello");
+    //  let h = s1[0]  //<-- will error: the type `str` cannot be indexed by `{integer}`
+
+    let hello = "नमस्ते"; // <- str "Namaste"स् ते
+    let c = &hello[0..3]; // in non-english utf-8 words, a single char might take more than one byte
+    println!("First char: {}", c);
+
+    //if we want to iterate the chars (we dont know the byte-length of each char)
+    for c in hello.chars() {
+        println!("{} => {:?}", c, c);
+    }
+
 }

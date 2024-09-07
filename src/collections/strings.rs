@@ -31,6 +31,17 @@ pub fn string_operations(){
     s.push('!');
     println!("updated with single char: {}", s);
 
-    
+    //string concatination
+    let s1 = String::from("Foo");
+    let s11 = s1.clone();
+    let s2 = String::from("Bar");
+    let s3 = String::from("Baz");
+
+    let concat1 = s1 + &s2 + &s3;
+    println!("Concatenated strings: {}", concat1);
+
+    // we had to clone s1 because its ownership "move" in line 40 restricts its use here
+    let concat2 = format!("formated concatenation: {}{}{}", s11, s2, s3);
+    println!("{}", concat2);
 
 }

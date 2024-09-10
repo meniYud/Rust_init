@@ -6,7 +6,7 @@ We'll cover importing Hash Maps from the standard library, updating values based
 
 It's perfect for those new to Rust and looking to deepen their understanding of this powerful language feature.
 */
-use std::collections::HashMap;
+use std::{collections::HashMap, iter::Copied};
 
 pub fn hash_maps_operations(){
     let mut scores = HashMap::new();
@@ -16,4 +16,11 @@ pub fn hash_maps_operations(){
 
     println!("Scores: {:?}", scores);
     
+
+    let team1_name = String::from("Blue");
+    let team2_name = String::from("Red");
+    let team1_score = scores.get(&team1_name).copied().unwrap_or(0);
+    let team2_score = scores.get(&team2_name).copied().unwrap_or(0);
+    println!("{} team score: {}", team1_name, team1_score);
+    println!("{} team score: {}", team2_name, team2_score);
 }

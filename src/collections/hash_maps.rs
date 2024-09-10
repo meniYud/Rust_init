@@ -36,4 +36,26 @@ pub fn hash_maps_operations(){
     for (key, value) in &languages {
         println!("{}: {}", key, value)
     }
+
+    //HashMaps and ownership
+    let mut map2 = HashMap::new();
+
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    map2.insert(&field_name, &field_value);
+
+    println!("{:?}", map2);
+    println!("field_name: {}", field_name);
+
+    let mut map3 = HashMap::new();
+
+    let text = String::from("Hello, world");
+    let number = 10;
+
+    map3.insert(&text, number);// String does not implement the "copy" trait so we must use borrowed value, but number does imlement the "copy" trait
+
+    println!("{:?}", map3);
+    println!("text: {}", text);
+    println!("number: {}", number);
 }

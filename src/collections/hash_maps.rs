@@ -58,4 +58,35 @@ pub fn hash_maps_operations(){
     println!("{:?}", map3);
     println!("text: {}", text);
     println!("number: {}", number);
+
+    //Updating a HashMap
+
+    let mut map4 = HashMap::new();
+
+    map4.insert(String::from("Blue"), 10);
+    map4.insert(String::from("Yellow"), 50);
+    map4.insert(String::from("Blue"), 30);
+
+    println!("{:?}", map4);
+
+    //Single insert per key
+    let mut map5 = HashMap::new();
+
+    map5.insert(String::from("Blue"), 10);
+    map5.entry(String::from("Yellow")).or_insert(50);
+    map5.entry(String::from("Blue")).or_insert(30);// will not be inserted
+
+    println!("{:?}", map5);
+
+    //Words Set exercise
+
+    let text = "I like programming in Rust because Rust is a great programming language";
+    let mut map6 = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map6.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map6);
 }

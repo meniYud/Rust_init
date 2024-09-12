@@ -16,17 +16,32 @@ use std::fs::File;
 use std::io::ErrorKind;
 
 pub fn result_enum(){
-    let greeting_from_file = File::open("hello.txt");
-    let greeting_file = match greeting_from_file {
-        Ok(file) => file,
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => match File::create("hello.txt") {
-                Ok(fc) => fc,
-                Err(error) => panic!("Unable to create the file: {:?}", error),
-            },
-            other_error => {
-                panic!("File found, but other error occured: {:?}", other_error);
+    // {
+    //     let greeting_from_file = File::open("hello.txt");
+    //     let greeting_file = match greeting_from_file {
+    //         Ok(file) => file,
+    //         Err(error) => match error.kind() {
+    //             ErrorKind::NotFound => match File::create("hello.txt") {
+    //                 Ok(fc) => fc,
+    //                 Err(error) => panic!("Unable to create the file: {:?}", error),
+    //             },
+    //             other_error => {
+    //                 panic!("File found, but other error occured: {:?}", other_error);
+    //             }
+    //         }
+    //     };
+    // }
+
+    {
+        File::open("hello.txt").unwrap_or_else(|error| {
+            if error.kind() == ErrorKind::NotFound {
+                File::create("hello.txt").unwrap_or_else(|error| {
+                    panic!("Unable to create the file: {:?}", error);
+                })
+            } else {
+                panic!("File found, but other error occured: {:?}", error);
             }
-        }
-    };
+        });
+        
+    }
 }

@@ -10,5 +10,5 @@ use hash_maps::hash_maps_operations;
 pub fn collections_main(){
     // vector_operations();
     // string_operations();
-    hash_maps_operations()
+    // hash_maps_operations()
 }

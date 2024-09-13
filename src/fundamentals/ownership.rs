@@ -131,8 +131,8 @@ pub fn references(){
         let s1 = &s;
         let s2 = &s;
         println!("s1: {}, s2: {}", s1, s2); //I can hold mutable reference OR shared immutable references. not both.
-        let sMod = &mut s; // but I can do that "in turns". first I use some immutable shared references... and then I use single mutable one
-        println!("s modified: {}", sMod);
+        let s_mod = &mut s; // but I can do that "in turns". first I use some immutable shared references... and then I use single mutable one
+        println!("s modified: {}", s_mod);
     }
 }
 

@@ -1,3 +1,10 @@
+#![allow(dead_code)]
+#![allow(unused_mut)]
+#![allow(unreachable_code)]
+#![allow(unused_parens)]
+#![allow(unused_imports)]
+#![allow(unused_variables)]
+
 mod fundamentals;
 mod paths;
 mod collections;

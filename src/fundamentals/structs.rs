@@ -24,7 +24,7 @@ struct User {
 struct Color(i32, i32, i32);
 
 #[derive(Debug)]
-struct Point_3d(i32, i32, i32);
+struct Point3d(i32, i32, i32);
 pub fn structs(){
     
     let user1 = User {
@@ -60,7 +60,7 @@ pub fn struct_factory() {
             is_active: true,
             age
         }
-    };
+    }
 
     let user1 = build_user(String::from("First"), String::from("john@email.com"), 18);
     let user2 = build_user(String::from("Second"), user1.email.clone(), user1.age);
@@ -71,7 +71,7 @@ pub fn struct_factory() {
 
 pub fn tuples_struct(){
     let black = Color(0,0,0);
-    let origin = Point_3d(0,0,0);
+    let origin = Point3d(0,0,0);
 
     println!("R: {}, G: {}, B: {}", black.0, black.1, black.2);
     println!("X: {}, Y: {}, Z: {}", origin.0, origin.1, origin.2);

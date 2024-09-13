@@ -50,27 +50,43 @@ pub fn result_enum(){
     //     let greeting_from_file = File::open("hello.txt").expect("****   Nein Nein Nein Nein   ****");
     // }
     
-    {
+
+    //     fn read_from_file() -> Result<String, io::Error> {
+    //         let f = File::open("tail.txt");
+
+    //         let mut f = match f {
+    //             Ok(file) => file,
+    //             Err(err) => return Err(err)
+    //         };
+
+    //         let mut s = String::new();
+
+    //         match f.read_to_string(&mut s){
+    //             Ok(_) => Ok(s),
+    //             Err(e) => return Err(e)
+    //         }
+
+        // fn read_from_file() -> Result<String, io::Error> {
+        //     let mut file = File::open("tail.txt")?;
+        //     let mut content = String::new();
+
+        //     file.read_to_string(&mut content)?;
+        //     Ok(content)
+        // }
+
         fn read_from_file() -> Result<String, io::Error> {
-            let f = File::open("tail.txt");
+            let mut content = String::new();
+            File::open("tail.txt")?.read_to_string(&mut content)?;
 
-            let mut f = match f {
-                Ok(file) => file,
-                Err(err) => return Err(err)
-            };
-
-            let mut s = String::new();
-
-            match f.read_to_string(&mut s){
-                Ok(_) => Ok(s),
-                Err(e) => return Err(e)
-            }
+            Ok(content)
         }
 
+        
         let res = read_from_file();
         match res {
             Ok(s) => println!("Success: {}", s),
             Err(e) => println!("Failed: {}", e)
         }
-    }
+
+    
 }

@@ -32,16 +32,20 @@ pub fn result_enum(){
     //     };
     // }
 
-    {
-        File::open("hello.txt").unwrap_or_else(|error| {
-            if error.kind() == ErrorKind::NotFound {
-                File::create("hello.txt").unwrap_or_else(|error| {
-                    panic!("Unable to create the file: {:?}", error);
-                })
-            } else {
-                panic!("File found, but other error occured: {:?}", error);
-            }
-        });
+    // {
+    //     File::open("hello.txt").unwrap_or_else(|error| {
+    //         if error.kind() == ErrorKind::NotFound {
+    //             File::create("hello.txt").unwrap_or_else(|error| {
+    //                 panic!("Unable to create the file: {:?}", error);
+    //             })
+    //         } else {
+    //             panic!("File found, but other error occured: {:?}", error);
+    //         }
+    //     });
         
+    // }
+
+    {
+        let greeting_from_file = File::open("hello.txt").expect("****   Nein Nein Nein Nein   ****");
     }
 }
